@@ -1,5 +1,4 @@
 from setuptools import setup, Extension
-import sys
 
 
 ext = Extension('morastrja._morastr',
