@@ -1,0 +1,1043 @@
+
+<!DOCTYPE html>
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>morastrja --- 日本語のモーラ列の管理 &#8212; morastrja 0.8.5 ドキュメント</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pyramid.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="prev" title="Welcome to morastrja&#39;s documentation!" href="index.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Pythonモジュール索引"
+             >モジュール</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to morastrja&#39;s documentation!"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">morastrja 0.8.5 ドキュメント</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">morastrja</span></code> --- 日本語のモーラ列の管理</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-morastrja">
+<span id="morastrja"></span><h1><a class="reference internal" href="#module-morastrja" title="morastrja"><code class="xref py py-mod docutils literal notranslate"><span class="pre">morastrja</span></code></a> --- 日本語のモーラ列の管理<a class="headerlink" href="#module-morastrja" title="この見出しへのパーマリンク">¶</a></h1>
+<hr class="docutils" />
+<p>このモジュールは、日本語のモーラ列を扱うためのクラスと、それを支援するいくつかのユーティリティー関数を提供します。</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#morastrja.count_all" title="morastrja.count_all"><code class="xref py py-func docutils literal notranslate"><span class="pre">count_all()</span></code></a></p></td>
+<td><p>仮名文字で構成された文字列に含まれるモーラ数を返す関数</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a></p></td>
+<td><p>モーラ列を文字列のように扱えるシーケンス型</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#morastrja.CONVERSION_TABLE" title="morastrja.CONVERSION_TABLE"><code class="xref py py-const docutils literal notranslate"><span class="pre">CONVERSION_TABLE</span></code></a></p></td>
+<td><p>半角カタカナから全角カタカナへの変換テーブル</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#module-utils" title="utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">utils</span></code></a></p></td>
+<td><p>モーラ分割の前処理に便利な関数群</p></td>
+</tr>
+</tbody>
+</table>
+<section id="id1">
+<h2>モジュール関数<a class="headerlink" href="#id1" title="この見出しへのパーマリンク">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="morastrja.count_all">
+<span class="sig-prename descclassname"><span class="pre">morastrja.</span></span><span class="sig-name descname"><span class="pre">count_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kana_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#morastrja.count_all" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>仮名文字で構成された文字列を受け取り、それに対応する音形に含まれるモーラ数を返すシンプルな関数です。
+<em>ignore</em> オプションを指定することで、不要な文字を読み飛ばすことができます。詳しくは、次節の <a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a> オブジェクトの説明や例も参照してください。</p>
+<p>例:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># モーラを数える</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">morastrja</span> <span class="kn">import</span> <span class="n">count_all</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">count_all</span><span class="p">(</span><span class="s1">&#39;きゃりーぱみゅぱみゅ&#39;</span><span class="p">)</span>
+<span class="go">7</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="morastr">
+<h2><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a> オブジェクト<a class="headerlink" href="#morastr" title="この見出しへのパーマリンク">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="morastrja.MoraStr">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">morastrja.</span></span><span class="sig-name descname"><span class="pre">MoraStr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kana_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#morastrja.MoraStr" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>日本語の仮名文字列から、モーラ毎にランダムアクセス可能なシーケンスを構成します。</p>
+<p>このクラスのコンストラクターは二つの引数を取ります。一つ目の引数は、日本語の仮名文字から成る文字列か <a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a>
+オブジェクトのいずれかでなくてはなりません。全角カタカナ・ひらがな・半角ｶﾀｶﾅ以外の文字が入力に含まれていた場合、エラーとなります。二つ目の引数は <em>ignore</em> オプションで、これがTrueに指定されていた場合、第一引数に渡された文字列に含まれる仮名文字以外の文字は全て読み飛ばされ、エラーは生じません。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>第一引数に渡される文字列中の全角カタカナとひらがなは、合成済み文字として正規化されている必要があります。つまり、濁点や半濁点を含む仮名は単一のコードポイントとして表現されていなければなりません。</p>
+</div>
+<p><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a> オブジェクトには、パブリックな属性として以下の2つのメンバーが存在します。</p>
+<dl class="py property">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">length:</span> <span class="pre">int</span></span></dt>
+<dd><p>オブジェクトに含まれるモーラ数を取得します。 <a class="footnote-reference brackets" href="#id8" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> morastr.length は len(morastr) と等価です。</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">string:</span> <span class="pre">str</span></span></dt>
+<dd><p>基底のカタカナ文字列を取得します。文字列に含まれる全ての文字は全角カタカナであることが保証されます。</p>
+</dd></dl>
+
+<p>また、 <a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a> オブジェクトは、以下の表にあるシーケンス演算に対応しています。
+sは仮名文字列か <a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a> オブジェクト、n, i, j, kは整数を表します。</p>
+<table class="docutils align-center">
+<thead>
+<tr class="row-odd"><th class="head"><p>シーケンス演算</p></th>
+<th class="head"><p>対応する特殊メソッドの呼び出し</p></th>
+<th class="head"><p>戻り値の型</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">in</span> <span class="pre">morastr</span></code> <a class="footnote-reference brackets" href="#id8" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">morastr.__contains__(s)</span></code></p></td>
+<td><p><em>bool</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">not</span> <span class="pre">in</span> <span class="pre">morastr</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">morastr.__contains__(s)</span></code></p></td>
+<td><p><em>bool</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">morastr</span> <span class="pre">+</span> <span class="pre">s</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">morastr.__add__(s)</span></code></p></td>
+<td><p><em>type(morastr)</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">morastr</span> <span class="pre">*</span> <span class="pre">n</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">morastr.__mul__(n)</span></code></p></td>
+<td><p><em>type(morastr)</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">*</span> <span class="pre">morastr</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">morastr.__rmul__(n)</span></code></p></td>
+<td><p><em>type(morastr)</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">morastr[i]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">morastr.__getitem__(i)</span></code></p></td>
+<td><p><em>str</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">morastr[i:j]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">morastr.__getitem__(slice(i,j))</span></code></p></td>
+<td><p><em>type(morastr)</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">morastr[i:j:k]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">morastr.__getitem__(slice(i,j,k))</span></code></p></td>
+<td><p><em>type(morastr)</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">len(morastr)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">morastr.__len__()</span></code></p></td>
+<td><p><em>int</em></p></td>
+</tr>
+</tbody>
+</table>
+<p>次に示すのは、基本的な使用例です。</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># MoraStrクラスをインポート</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">morastr</span> <span class="kn">import</span> <span class="n">MoraStr</span>
+
+<span class="go"># インスタンスの作成</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;モーラ&#39;</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;モ&#39; &#39;ー&#39; &#39;ラ&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ひらがな&#39;</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;ヒ&#39; &#39;ラ&#39; &#39;ガ&#39; &#39;ナ&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ﾊﾝｶｸﾓｼﾞ&#39;</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;ハ&#39; &#39;ン&#39; &#39;カ&#39; &#39;ク&#39; &#39;モ&#39; &#39;ジ&#39;)</span>
+
+<span class="go"># 拗音類</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;トーキョー&#39;</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;ト&#39; &#39;ー&#39; &#39;キョ&#39; &#39;ー&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ティッシュ&#39;</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;ティ&#39; &#39;ッ&#39; &#39;シュ&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;シミュレーション&#39;</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;シ&#39; &#39;ミュ&#39; &#39;レ&#39; &#39;ー&#39; &#39;ショ&#39; &#39;ン&#39;)</span>
+
+<span class="go"># 仮名文字以外はエラー (ignoreオプションで読み飛ばせる)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;漢字&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">ValueError</span>: <span class="n">invalid character: &#39;漢&#39; (u+6f22)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;漢字が難しい&#39;</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;ガ&#39; &#39;シ&#39; &#39;イ&#39;)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;    モジ    &#39;</span><span class="p">)</span>   <span class="c1"># 仮名文字の前後に空白</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">ValueError</span>: <span class="n">invalid character: &#39; &#39; (u+0020)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;     モジ    &#39;</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;モ&#39; &#39;ジ&#39;)</span>
+
+<span class="go"># モーラ数を取得</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;モーラ&#39;</span><span class="p">))</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;シミュレーション&#39;</span><span class="p">))</span>
+<span class="go">6</span>
+
+<span class="go"># .length属性でも取得可</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;シミュレーション&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span>
+<span class="go">6</span>
+
+<span class="go"># モーラ数だけでいいなら、count_all()が高速</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="o">.</span><span class="n">count_all</span><span class="p">(</span><span class="s1">&#39;チューリップ&#39;</span><span class="p">)</span>
+<span class="go">5</span>
+
+<span class="go"># .string属性で、正規化されたプレーンな文字列を取得</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ｺﾝﾋﾟｭｰﾀｰ&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span>
+<span class="go">MoraStr(&#39;コ&#39; &#39;ン&#39; &#39;ピュ&#39; &#39;ー&#39; &#39;タ&#39; &#39;ー&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">string</span>
+<span class="go">&#39;コンピューター&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">string</span><span class="p">)</span>
+<span class="go">&lt;class &#39;str&#39;&gt;</span>
+
+<span class="go"># 添え字アクセス</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;アーティキュレーション&#39;</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span>
+<span class="go">&#39;キュ&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;アーティキュレーション&#39;</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>        <span class="c1"># 参考</span>
+<span class="go">&#39;ィ&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;アーティキュレーション&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">&#39;ショ&#39;</span>
+
+<span class="go"># 範囲外はエラー</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;アーティキュレーション&#39;</span><span class="p">)[</span><span class="mi">8</span><span class="p">]</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">IndexError</span>: <span class="n">MoraStr index out of range</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;アーティキュレーション&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">IndexError</span>: <span class="n">MoraStr index out of range</span>
+
+<span class="x"># スライス</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;シチュエーション&#39;</span><span class="p">)[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">MoraStr(&#39;シ&#39; &#39;チュ&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;アルバイト&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>
+<span class="go">MoraStr(&#39;バ&#39; &#39;イ&#39; &#39;ト&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ノートルダムジョガクイン&#39;</span><span class="p">)[</span><span class="mi">4</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span>
+<span class="go">MoraStr(&#39;ダ&#39; &#39;ム&#39; &#39;ジョ&#39;)</span>
+
+<span class="go"># 内容の書き換えは不可。イミュータブル</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;オブジェクト&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;サ&#39;</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">TypeError</span>: <span class="n">&#39;morastr.MoraStr&#39; object does not support item assignment</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;オーストラリア&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">m</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">TypeError</span>: <span class="n">&#39;morastr.MoraStr&#39; object doesn&#39;t support item deletion</span>
+
+<span class="x"># ハッシュ可能。辞書のキーとして使える</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">key</span> <span class="o">=</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;キー&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapping</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapping</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;バリュー&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;キー&#39;</span><span class="p">)</span> <span class="ow">in</span> <span class="n">mapping</span>
+<span class="go">True</span>
+
+<span class="go"># 等価性の判定: .string属性同士が比較される</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;もじれつ&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;モジレツ&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ﾓｼﾞﾚﾂ&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;クラス&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;グラス&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;バレエ&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;バレー&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+
+<span class="go"># 文字列との比較は、同じ内容であってもFalseとなる</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;モジレツ&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;モジレツ&#39;</span>
+<span class="go">False</span>
+
+<span class="go"># 順序比較は定義されていない</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;カー&#39;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;カイ&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">TypeError</span>: <span class="n">&#39;&lt;&#39; not supported between instances of ...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;はつか&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;はっか&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">TypeError</span>: <span class="n">&#39;&gt;&#39; not supported between instances of ...</span>
+
+<span class="x"># 部分モーラ列判定 (in)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;シャ&#39;</span> <span class="ow">in</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ショーシャマン&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;シ&#39;</span> <span class="ow">in</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ショーシャマン&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;パンキョー&#39;</span> <span class="ow">in</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;イッパンキョーヨー&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;パンキ&#39;</span> <span class="ow">in</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;イッパンキョーヨー&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+
+<span class="go"># +演算子: MoraStrオブジェクトを結合して新しいオブジェクトを返す</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;トーキョー&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;スカイツリー&#39;</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;ト&#39; &#39;ー&#39; &#39;キョ&#39; &#39;ー&#39; &#39;ス&#39; &#39;カ&#39; &#39;イ&#39; &#39;ツ&#39; &#39;リ&#39; &#39;ー&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ジェット&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;エンジン&#39;</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;ジェ&#39; &#39;ッ&#39; &#39;ト&#39; &#39;エ&#39; &#39;ン&#39; &#39;ジ&#39; &#39;ン&#39;)</span>
+
+<span class="go"># 繰り返し</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;オラ&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8</span>
+<span class="go">MoraStr(&#39;オ&#39; &#39;ラ&#39; &#39;オ&#39; &#39;ラ&#39; &#39;オ&#39; &#39;ラ&#39; &#39;オ&#39; &#39;ラ&#39; &#39;オ&#39; &#39;ラ&#39; &#39;オ&#39; &#39;ラ&#39; &#39;オ&#39; &#39;ラ&#39; &#39;オ&#39; &#39;ラ&#39;)</span>
+
+<span class="go"># イテレーターの取得</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;あしゅら&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+<span class="go">&#39;ア&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+<span class="go">&#39;シュ&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+<span class="go">&#39;ラ&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">StopIteration</span>
+
+<span class="x"># for文で回す</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;バーチャル&#39;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">バ</span>
+<span class="go">ー</span>
+<span class="go">チャ</span>
+<span class="go">ル</span>
+
+<span class="go"># リスト化</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;シュレッダー&#39;</span><span class="p">))</span>
+<span class="go">[&#39;シュ&#39;, &#39;レ&#39;, &#39;ッ&#39;, &#39;ダ&#39;, &#39;ー&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="o">*</span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;シュレッダー&#39;</span><span class="p">)]</span>    <span class="c1"># 上と同じ</span>
+<span class="go">[&#39;シュ&#39;, &#39;レ&#39;, &#39;ッ&#39;, &#39;ダ&#39;, &#39;ー&#39;]</span>
+
+<span class="go"># 逆順にイテレート</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;チョコレート&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">r</span><span class="p">);</span> <span class="nb">next</span><span class="p">(</span><span class="n">r</span><span class="p">);</span> <span class="nb">next</span><span class="p">(</span><span class="n">r</span><span class="p">);</span> <span class="nb">next</span><span class="p">(</span><span class="n">r</span><span class="p">);</span> <span class="nb">next</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+<span class="go">&#39;ト&#39;</span>
+<span class="go">&#39;ー&#39;</span>
+<span class="go">&#39;レ&#39;</span>
+<span class="go">&#39;コ&#39;</span>
+<span class="go">&#39;チョ&#39;</span>
+
+<span class="go"># 反転したオブジェクトはm[::-1]で生成できる</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;チョコレート&#39;</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">MoraStr(&#39;ト&#39; &#39;ー&#39; &#39;レ&#39; &#39;コ&#39; &#39;チョ&#39;)</span>
+
+<span class="go"># repr()で得た文字列表現をeval()したものは、元のオブジェクトと等価</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;モーラ&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">eval</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">m</span><span class="p">))</span> <span class="o">==</span> <span class="n">m</span>
+<span class="go">True</span>
+
+<span class="go"># 参照: https://docs.python.org/ja/3.11/library/functions.html#eval</span>
+
+<span class="go"># 直列化 (pickle化)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pickle</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m1</span> <span class="o">=</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;チョクレツカ&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m2</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m2</span>
+<span class="go">MoraStr(&#39;チョ&#39; &#39;ク&#39; &#39;レ&#39; &#39;ツ&#39; &#39;カ&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m1</span> <span class="o">==</span> <span class="n">m2</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="morastrja.MoraStr.fromstrs">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fromstrs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="p"><span class="pre">[</span></span><span class="pre">Self</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">iterable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="headerlink" href="#morastrja.MoraStr.fromstrs" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>複数のカタカナ文字列から、一つの <a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a> オブジェクトを生成する代替的なコンストラクタです。任意の数の文字列、あるいは文字列のイテラブルを引数として取ります。キーワード引数は、通常のコンストラクタと同じように扱われます。</p>
+<p>概ね、次のコードと等価です:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">fromstrs</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">iterables</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">iterables</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>例:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># 複数の文字列からインスタンスを作成</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="o">.</span><span class="n">fromstrs</span><span class="p">(</span><span class="s1">&#39;シゼン&#39;</span><span class="p">,</span> <span class="s1">&#39;カンキョー&#39;</span><span class="p">,</span> <span class="s1">&#39;ホゴ&#39;</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;シ&#39; &#39;ゼ&#39; &#39;ン&#39; &#39;カ&#39; &#39;ン&#39; &#39;キョ&#39; &#39;ー&#39; &#39;ホ&#39; &#39;ゴ&#39;)</span>
+
+<span class="go"># 文字列のリストから</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="o">.</span><span class="n">fromstrs</span><span class="p">([</span><span class="s1">&#39;カンセンショー&#39;</span><span class="p">,</span> <span class="s1">&#39;カクダイ&#39;</span><span class="p">,</span> <span class="s1">&#39;ボーシ&#39;</span><span class="p">])</span>
+<span class="go">MoraStr(&#39;カ&#39; &#39;ン&#39; &#39;セ&#39; &#39;ン&#39; &#39;ショ&#39; &#39;ー&#39; &#39;カ&#39; &#39;ク&#39; &#39;ダ&#39; &#39;イ&#39; &#39;ボ&#39; &#39;ー&#39; &#39;シ&#39;)</span>
+
+<span class="go"># リストに限らず、任意のリテラブルを受け取れる</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seasons</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ハル&#39;</span><span class="p">:</span> <span class="s1">&#39;spring&#39;</span><span class="p">,</span> <span class="s1">&#39;ナツ&#39;</span><span class="p">:</span> <span class="s1">&#39;summer&#39;</span><span class="p">,</span> <span class="s1">&#39;アキ&#39;</span><span class="p">:</span> <span class="s1">&#39;autumn&#39;</span><span class="p">,</span> <span class="s1">&#39;フユ&#39;</span><span class="p">:</span> <span class="s1">&#39;winter&#39;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="o">.</span><span class="n">fromstrs</span><span class="p">(</span><span class="n">seasons</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;ハ&#39; &#39;ル&#39; &#39;ナ&#39; &#39;ツ&#39; &#39;ア&#39; &#39;キ&#39; &#39;フ&#39; &#39;ユ&#39;)</span>
+
+<span class="go"># イテラブルは複数でも可</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="o">.</span><span class="n">fromstrs</span><span class="p">([</span><span class="s1">&#39;キョー&#39;</span><span class="p">,</span> <span class="s1">&#39;ワ&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;イー&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;テンキ&#39;</span><span class="p">,</span> <span class="s1">&#39;デス&#39;</span><span class="p">])</span>
+<span class="go">MoraStr(&#39;キョ&#39; &#39;ー&#39; &#39;ワ&#39; &#39;イ&#39; &#39;ー&#39; &#39;テ&#39; &#39;ン&#39; &#39;キ&#39; &#39;デ&#39; &#39;ス&#39;)</span>
+
+<span class="go"># MoraStr()と同じく、ignoreオプションで無効な文字を読み飛ばせる。</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="o">.</span><span class="n">fromstrs</span><span class="p">([</span><span class="s1">&#39;　サンショーウオ🐡&#39;</span><span class="p">,</span> <span class="s1">&#39;ワ&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;カナシンダ😢。&#39;</span><span class="p">],</span> <span class="n">ignore</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;サ&#39; &#39;ン&#39; &#39;ショ&#39; &#39;ー&#39; &#39;ウ&#39; &#39;オ&#39; &#39;ワ&#39; &#39;カ&#39; &#39;ナ&#39; &#39;シ&#39; &#39;ン&#39; &#39;ダ&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morastrja.MoraStr.count_all">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">count_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kana_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#morastrja.MoraStr.count_all" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>モジュール関数 <a class="reference internal" href="#morastrja.count_all" title="morastrja.count_all"><code class="xref py py-func docutils literal notranslate"><span class="pre">count_all()</span></code></a> と同じです。仮名文字列を受け取り、それに対応する音形に含まれるモーラ数を返します。
+<code class="docutils literal notranslate"><span class="pre">len(MoraStr(kana_string))</span></code> とも概ね同じですが、こちらの関数の方が余分な中間オブジェクトを生成しない分、高速です。第一引数は文字列型のみが指定可能です。 <code class="docutils literal notranslate"><span class="pre">MoraStr()</span></code> と同じく、 <em>ignore</em> オプションを指定することで、不要な文字を読み飛ばすことができます。</p>
+<p>例:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># モーラを数える</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="o">.</span><span class="n">count_all</span><span class="p">(</span><span class="s1">&#39;きゃりーぱみゅぱみゅ&#39;</span><span class="p">)</span>
+<span class="go">7</span>
+
+<span class="go"># 仮名文字以外を読み飛ばす</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="o">.</span><span class="n">count_all</span><span class="p">(</span><span class="s1">&#39;I am ジュンヤ.&#39;</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morastrja.MoraStr.char_indices">
+<span class="sig-name descname"><span class="pre">char_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zero</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#morastrja.MoraStr.char_indices" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>モーラ毎の文字数の累積和を整数のリストで返します。 <em>zero</em> オプションを True に設定すると、戻り値の累積和リストが0始まりになります。</p>
+<p>例:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># モーラ毎の文字数の累積和をリストで返す</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;アクションシューティング&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">char_indices</span><span class="p">()</span>
+<span class="go">[1, 2, 4, 5, 7, 8, 10, 11, 12]</span>
+
+<span class="go"># zeroオプションでリストの先頭に0が挿入される</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;アクションシューティング&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">char_indices</span><span class="p">(</span><span class="n">zero</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">[0, 1, 2, 4, 5, 7, 8, 10, 11, 12]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morastrja.MoraStr.count">
+<span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_morastr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#morastrja.MoraStr.count" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">self[start:end]</span></code> の範囲内に部分モーラ列 <em>sub_morastr</em> が現れる回数を返します <a class="footnote-reference brackets" href="#id9" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> 。
+<em>sub_morastr</em> は、仮名文字列か <a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a> オブジェクトでなくてはなりません。もしも <em>start</em> が <em>sub_morastr</em> の長さを超えていた場合は0が返されます。</p>
+<p>例:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># 部分モーラ列を数える</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;すもももももももものうち&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;も&#39;</span><span class="p">)</span>
+<span class="go">8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ししょしつ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;し&#39;</span><span class="p">)</span>
+<span class="go">2</span>
+
+<span class="go"># 第二引数 (start)、第三引数 (end) で範囲を限定</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;どじょーにょろにょろみにょろにょろ&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;にょろ&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>       <span class="c1"># == m[7:].count(&#39;にょろ&#39;)</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;にょろ&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>   <span class="c1"># == m[3:10].count(&#39;にょろ&#39;)</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;トーキョートッキョキョカキョク&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;キョ&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">)</span>       <span class="c1"># == m[-4:].count(&#39;キョ&#39;)</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morastrja.MoraStr.endswith">
+<span class="sig-name descname"><span class="pre">endswith</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#morastrja.MoraStr.endswith" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">str.endswith()</span></code> と似ていますが、引数はモーラ単位で解釈されます。</p>
+<p>例:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># str.endswithとほぼ同じ</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;アルバイト&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;バイト&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+
+<span class="go"># 第二引数(start)と第三引数(end)で範囲をモーラ単位で指定</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;クリスチャン&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;クリス&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ジュンイチ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;イチ&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">False</span>
+
+<span class="go"># 第一引数にはタプルも指定可能。いずれかに一致すればTrue</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;アンパンマン&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">endswith</span><span class="p">((</span><span class="s1">&#39;セン&#39;</span><span class="p">,</span> <span class="s1">&#39;マン&#39;</span><span class="p">,</span> <span class="s1">&#39;オク&#39;</span><span class="p">))</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;セバスチャン&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">endswith</span><span class="p">((</span><span class="s1">&#39;クン&#39;</span><span class="p">,</span> <span class="s1">&#39;サン&#39;</span><span class="p">,</span> <span class="s1">&#39;サマ&#39;</span><span class="p">))</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morastrja.MoraStr.find">
+<span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_morastr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charwise</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#morastrja.MoraStr.find" title="この定義へのパーマリンク">¶</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_morastr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span></dt>
+<dd><p><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a> オブジェクト内で、最初に <em>sub_morastr</em> が見つかった位置をモーラ単位で返します。<em>start/end</em> 引数はスライスとして解釈されますが、 <em>start</em> 引数を指定した場合に返されるインデックスは
+<em>start</em> を起点として数えたものではなく、文字列全体から見たものになります。 <em>start</em> が <code class="docutils literal notranslate"><span class="pre">len(self)</span></code>
+を超えているか、 <em>sub_morastr</em> が見つからなかった場合には、-1を返します。 <em>charwise</em> オプションを True に設定すると、 <em>sub_morastr</em> の位置インデックスをモーラ単位ではなく文字数単位で返すようになります。 <em>charwise</em> オプションは、 <em>start/end</em> が指定されていない場合にのみ有効です。</p>
+<p>例:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># 部分モーラ列のインデックス(0始まり)をモーラ単位で返す</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;チューオーチ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;チ&#39;</span><span class="p">)</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ジュージュンメ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;ジュン&#39;</span><span class="p">)</span>
+<span class="go">2</span>
+
+<span class="go"># 見つからなかった場合は-1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;シャンソンカシュ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;シ&#39;</span><span class="p">)</span>
+<span class="go">-1</span>
+
+<span class="go"># 第二引数 (start)、第三引数 (end) で範囲を限定</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;チイキジチ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;チ&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;シュンカシュートー&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;シュ&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ディーブイディー&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;ディー&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">-1</span>
+
+<span class="go"># charwiseオプションを指定すると、当該モーラの位置を文字単位で返す</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;シュンジュージダイ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;ジ&#39;</span><span class="p">)</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;シュンジュージダイ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;ジ&#39;</span><span class="p">,</span> <span class="n">charwise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">6</span>
+
+<span class="go"># start/end引数と、charwise引数を同時に指定するとエラー</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;センゴクジダイ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;ジ&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">charwise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">TypeError</span>: <span class="n">...</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morastrja.MoraStr.finditer">
+<span class="sig-name descname"><span class="pre">finditer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_morastr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charwise</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#morastrja.MoraStr.finditer" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">self</span></code> 内で <em>sub_morastr</em> が現れる位置を yield するイテレーターを返します <a class="footnote-reference brackets" href="#id9" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> 。
+<em>sub_morastr</em> は仮名文字列か <a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a> オブジェクトでなければなりません。<em>sub_morastr</em> が <code class="docutils literal notranslate"><span class="pre">self</span></code> よりも長い場合（モーラ数が多い場合）、スワップした後に検索が行われます。つまり、長いモーラ列内を短いモーラ列で検索した結果を yield します。<em>charwise</em> オプションを指定すると、位置インデックスはモーラ数ではなく文字数を元に算出されます。</p>
+<p>例:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># モーラ列が現れる位置をyieldするイテレーターを返す</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">it</span> <span class="o">=</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;シュンキデシュッシシューリョー&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="s1">&#39;シュ&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+<span class="go">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+<span class="go">7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">StopIteration</span>
+
+<span class="x"># 「何モーラ目か」ではなく「何文字目か」を知りたい場合は、charwiseオプションを指定する</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">it</span> <span class="o">=</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;シュンキデシュッシシューリョー&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="s1">&#39;シュ&#39;</span><span class="p">,</span> <span class="n">charwise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>        <span class="c1"># リスト化</span>
+<span class="go">[0, 5, 9]</span>
+
+<span class="go"># レシーバーよりも引数の方が長い場合、レシーバーと引数をスワップしてから検索が行われる</span>
+<span class="go"># つまり、レシーバーと引数のうち「長い方」の中から「短い方」を検索する</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">it</span> <span class="o">=</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;シュ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="s1">&#39;シュンキデシュッシシューリョー&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">0</span>
+<span class="go">4</span>
+<span class="go">7</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morastrja.MoraStr.index">
+<span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_morastr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charwise</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#morastrja.MoraStr.index" title="この定義へのパーマリンク">¶</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_morastr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span></dt>
+<dd><p><a class="reference internal" href="#morastrja.MoraStr.find" title="morastrja.MoraStr.find"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MoraStr.find()</span></code></a> と大体同じですが、モーラ列が見つからなかったときに -1ではなく<code class="docutils literal notranslate"><span class="pre">IndexError</span></code> を返します。</p>
+<p>例:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># MoraStr.find()とほぼ同じだが、見つからなかった場合にはエラーを返す</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;チューオーチ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;チ&#39;</span><span class="p">)</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ジュージュンメ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;ジュン&#39;</span><span class="p">)</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;シャンソンカシュ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;シ&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">ValueError</span>: <span class="n">submora-string not found</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;チイキジチ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;チ&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;シュンカシュートー&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;シュ&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ディーブイディー&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;ディー&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">ValueError</span>: <span class="n">submora-string not found</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;シュンジュージダイ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;ジ&#39;</span><span class="p">)</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;シュンジュージダイ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;ジ&#39;</span><span class="p">,</span> <span class="n">charwise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;センゴクジダイ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;ジ&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">charwise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">TypeError</span>: <span class="n">...</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morastrja.MoraStr.removeprefix">
+<span class="sig-name descname"><span class="pre">removeprefix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a></span></span><a class="headerlink" href="#morastrja.MoraStr.removeprefix" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">self</span></code> が <em>prefix</em> で始まっていたなら、 <code class="docutils literal notranslate"><span class="pre">self[len(prefix):]</span></code> を返し、そうでないなら、元のオブジェクトのコピーを返します。</p>
+<p>例:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># MoraStrオブジェクトが指定されたモーラ列で始まっていたら、その部分を削除したモーラ列を返す</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;メッシュキジ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">removeprefix</span><span class="p">(</span><span class="s1">&#39;メッシュ&#39;</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;キ&#39; &#39;ジ&#39;)</span>
+
+<span class="go"># 先頭のモーラ列が一致しない場合、元と等価なオブジェクトを返す</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;メッシュキジ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">removeprefix</span><span class="p">(</span><span class="s1">&#39;メッシ&#39;</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;メ&#39; &#39;ッ&#39; &#39;シュ&#39; &#39;キ&#39; &#39;ジ&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morastrja.MoraStr.removesuffix">
+<span class="sig-name descname"><span class="pre">removesuffix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a></span></span><a class="headerlink" href="#morastrja.MoraStr.removesuffix" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">self</span></code> が <em>suffix</em> で終わっていたなら<code class="docutils literal notranslate"><span class="pre">morastr[:len(morastr)-len(suffix)]</span></code> を返し、そうでないなら、元のオブジェクトのコピーを返します。</p>
+<p>例:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># MoraStrオブジェクトが指定されたモーラ列で終わっていたら、その部分を削除したモーラ列を返す</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;リンゴジュース&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">removesuffix</span><span class="p">(</span><span class="s1">&#39;ジュース&#39;</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;リ&#39; &#39;ン&#39; &#39;ゴ&#39;)</span>
+
+<span class="go"># 末尾のモーラ列が一致しない場合、元と等価なオブジェクトを返す</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;リンゴジャム&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">removesuffix</span><span class="p">(</span><span class="s1">&#39;ジュース&#39;</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;リ&#39; &#39;ン&#39; &#39;ゴ&#39; &#39;ジャ&#39; &#39;ム&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morastrja.MoraStr.replace">
+<span class="sig-name descname"><span class="pre">replace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">new</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxcount</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a></span></span><a class="headerlink" href="#morastrja.MoraStr.replace" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a> オブジェクト中の部分モーラ列 <em>old</em> を <em>new</em> で置き換えた新しいオブジェクトを返します。 <em>maxcount</em> を非負数に設定した場合、左から順にその回数だけ置換が行われます。</p>
+<p>例:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># 第一引数のモーラを第二引数のモーラで置き換えた新しいモーラ列を返す</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;カンカンカン&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;カ&#39;</span><span class="p">,</span> <span class="s1">&#39;コ&#39;</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;コ&#39; &#39;ン&#39; &#39;コ&#39; &#39;ン&#39; &#39;コ&#39; &#39;ン&#39;)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ドンドンドンドン&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;ド&#39;</span><span class="p">,</span> <span class="s1">&#39;ビュ&#39;</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;ビュ&#39; &#39;ン&#39; &#39;ビュ&#39; &#39;ン&#39; &#39;ビュ&#39; &#39;ン&#39; &#39;ビュ&#39; &#39;ン&#39;)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;にゃんにゃんにゃん&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;にゃ&#39;</span><span class="p">,</span> <span class="s1">&#39;わ&#39;</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;ワ&#39; &#39;ン&#39; &#39;ワ&#39; &#39;ン&#39; &#39;ワ&#39; &#39;ン&#39;)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;チョロチョロ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;チョ&#39;</span><span class="p">,</span> <span class="s1">&#39;ジョ&#39;</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;ジョ&#39; &#39;ロ&#39; &#39;ジョ&#39; &#39;ロ&#39;)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;かえるぴょこぴょこみぴょこぴょこ&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;かえる&#39;</span><span class="p">,</span> <span class="s1">&#39;どじょう&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;ぴょこ&#39;</span><span class="p">,</span> <span class="s1">&#39;にょろ&#39;</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;ド&#39; &#39;ジョ&#39; &#39;ウ&#39; &#39;ニョ&#39; &#39;ロ&#39; &#39;ニョ&#39; &#39;ロ&#39; &#39;ミ&#39; &#39;ニョ&#39; &#39;ロ&#39; &#39;ニョ&#39; &#39;ロ&#39;)</span>
+
+<span class="go"># 第一引数の部分モーラ列が見つからない場合は、元と同じモーラ列を返す</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;チョロチョロ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;チ&#39;</span><span class="p">,</span> <span class="s1">&#39;キ&#39;</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;チョ&#39; &#39;ロ&#39; &#39;チョ&#39; &#39;ロ&#39;)</span>
+
+<span class="go"># 置換回数を指定</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;オラオラオラオラオラオラオラオラ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;オラ&#39;</span><span class="p">,</span> <span class="s1">&#39;ムダ&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="go">MoraStr(&#39;ム&#39; &#39;ダ&#39; &#39;ム&#39; &#39;ダ&#39; &#39;ム&#39; &#39;ダ&#39; &#39;ム&#39; &#39;ダ&#39; &#39;ム&#39; &#39;ダ&#39; &#39;オ&#39; &#39;ラ&#39; &#39;オ&#39; &#39;ラ&#39; &#39;オ&#39; &#39;ラ&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morastrja.MoraStr.rfind">
+<span class="sig-name descname"><span class="pre">rfind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_morastr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charwise</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#morastrja.MoraStr.rfind" title="この定義へのパーマリンク">¶</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rfind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_morastr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span></dt>
+<dd><p><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a> オブジェクト内で、最後に <em>sub_morastr</em> が見つかった位置をモーラ単位で返します。<em>start</em> が <code class="docutils literal notranslate"><span class="pre">len(self)</span></code> を超えているか、 <em>sub_morastr</em> が見つからなかった場合には、-1を返します。 <em>start/end</em> 引数はスライスとして解釈されますが、 <em>start</em> 引数を指定した場合に返されるインデックスは <em>start</em> を起点として数えたものではなく、文字列全体から見たものになります。
+<em>charwise</em> オプションを True に設定すると、 <em>sub_morastr</em> が見つかった位置をモーラ単位ではなく文字数単位で返します。 <em>charwise</em> オプションは、 <em>start/end</em> が指定されていない場合にのみ有効です。</p>
+<p>例:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># 部分モーラ列を逆順に検索</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ソツギョーショーショ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s1">&#39;ショ&#39;</span><span class="p">)</span>
+<span class="go">6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ソツギョーショーショ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s1">&#39;ショー&#39;</span><span class="p">)</span>
+<span class="go">4</span>
+
+<span class="go"># 見つからなかった場合は-1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ソツギョーショーショ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s1">&#39;シ&#39;</span><span class="p">)</span>
+<span class="go">-1</span>
+
+<span class="go"># 第二引数 (start)、第三引数 (end) で範囲を限定</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ソツギョーショーショ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s1">&#39;ショ&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ソツギョーショーショ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s1">&#39;ギョ&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">-1</span>
+
+<span class="go"># charwiseオプションを指定すると、当該モーラの位置を文字単位で返す</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ソツギョーショーショ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s1">&#39;ショ&#39;</span><span class="p">,</span> <span class="n">charwise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ソツギョーショーショ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s1">&#39;ショー&#39;</span><span class="p">,</span> <span class="n">charwise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">5</span>
+
+<span class="go"># start/end引数と、charwise引数を同時に指定するとエラー</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ソツギョーショーショ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s1">&#39;ギョ&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">charwise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">TypeError</span>: <span class="n">...</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morastrja.MoraStr.rindex">
+<span class="sig-name descname"><span class="pre">rindex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_morastr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charwise</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#morastrja.MoraStr.rindex" title="この定義へのパーマリンク">¶</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rindex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_morastr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span></dt>
+<dd><p><a class="reference internal" href="#morastrja.MoraStr.rfind" title="morastrja.MoraStr.rfind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MoraStr.rfind()</span></code></a> と大体同じですが、モーラ列が見つからなかったときに -1ではなく<code class="docutils literal notranslate"><span class="pre">IndexError</span></code> を返します。</p>
+<p>例:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># MoraStr.rfind()とほぼ同じだが、見つからなかった場合にはエラーを返す</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ゴミシューシューシャ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rindex</span><span class="p">(</span><span class="s1">&#39;シュ&#39;</span><span class="p">)</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ゴミシューシューシャ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rindex</span><span class="p">(</span><span class="s1">&#39;シャー&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">ValueError</span>: <span class="n">submora-string not found</span>
+
+<span class="x"># 第二引数 (start)、第三引数 (end) で範囲を限定</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ゴミシューシューシャ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rindex</span><span class="p">(</span><span class="s1">&#39;シュー&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ゴミシューシューシャ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rindex</span><span class="p">(</span><span class="s1">&#39;ゴミ&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">ValueError</span>: <span class="n">submora-string not found</span>
+
+<span class="x"># charwiseオプションを指定すると、当該モーラの位置を文字単位で返す</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ゴミシューシューシャ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rindex</span><span class="p">(</span><span class="s1">&#39;シャ&#39;</span><span class="p">,</span> <span class="n">charwise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ゴミシューシューシャ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rindex</span><span class="p">(</span><span class="s1">&#39;シュー&#39;</span><span class="p">,</span> <span class="n">charwise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">5</span>
+
+<span class="go"># start/end引数と、charwise引数を同時に指定するとエラー</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ゴミシューシューシャ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rindex</span><span class="p">(</span><span class="s1">&#39;ゴミ&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">charwise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">TypeError</span>: <span class="n">...</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morastrja.MoraStr.startswith">
+<span class="sig-name descname"><span class="pre">startswith</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#morastrja.MoraStr.startswith" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">str.startswith()</span></code> と似ていますが、引数はモーラ単位で解釈されます。</p>
+<p>例:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># MoraStrオブジェクトが、指定したモーラ列で始まるかどうかを判定</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;マッチャアイス&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;マッチャ&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;マッチャアイス&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;マッチ&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+
+<span class="go"># 第二引数(start)と第三引数(end)で範囲をモーラ単位で指定</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;アオリンゴジュース&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;リンゴ&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;ナツミカンゼリー&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;ミカンゼリー&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">False</span>
+
+<span class="go"># 第一引数にはタプルも指定可能。いずれかに一致すればTrue</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;バナナパフェ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">((</span><span class="s1">&#39;イチゴ&#39;</span><span class="p">,</span> <span class="s1">&#39;バナナ&#39;</span><span class="p">,</span> <span class="s1">&#39;マッチャ&#39;</span><span class="p">))</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;カボチャパフェ&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">((</span><span class="s1">&#39;イチゴ&#39;</span><span class="p">,</span> <span class="s1">&#39;バナナ&#39;</span><span class="p">,</span> <span class="s1">&#39;マッチャ&#39;</span><span class="p">))</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morastrja.MoraStr.tostr">
+<span class="sig-name descname"><span class="pre">tostr</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#morastrja.MoraStr.tostr" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>オブジェクト内部の文字列表現を返します。 <a class="footnote-reference brackets" href="#id8" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> morastr.tostr() は
+morastr.string と等価です。</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># 複数のMoraStrオブジェクトをまとめてstr型に戻す</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">morastr_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;いち&#39;</span><span class="p">),</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;に&#39;</span><span class="p">),</span> <span class="n">MoraStr</span><span class="p">(</span><span class="s1">&#39;さん&#39;</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="n">MoraStr</span><span class="o">.</span><span class="n">tostr</span><span class="p">,</span> <span class="n">morastr_list</span><span class="p">)]</span>
+<span class="go">[&#39;イチ&#39;, &#39;ニ&#39;, &#39;サン&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="id7">
+<h2>内部データ<a class="headerlink" href="#id7" title="この見出しへのパーマリンク">¶</a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="morastrja.CONVERSION_TABLE">
+<span class="sig-prename descclassname"><span class="pre">morastrja.</span></span><span class="sig-name descname"><span class="pre">CONVERSION_TABLE</span></span><a class="headerlink" href="#morastrja.CONVERSION_TABLE" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>半角カタカナがどのように全角カタカナにマッピングされるかを示した読み取り専用の辞書です。
+<a class="reference internal" href="#morastrja.count_all" title="morastrja.count_all"><code class="xref py py-func docutils literal notranslate"><span class="pre">count_all()</span></code></a> 関数や <a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a> オブジェクトのメソッドの引数処理に使われます。実行中に書き換えることはできませんが、 <a class="reference internal" href="#module-morastrja" title="morastrja"><code class="xref py py-mod docutils literal notranslate"><span class="pre">morastrja</span></code></a> モジュールがインストールされているディレクトリにある <em>data/table.py</em> を編集することで、次回起動時以降の振る舞いをカスタマイズすることができます。</p>
+</dd></dl>
+
+</section>
+<section id="utils">
+<h2><a class="reference internal" href="#module-utils" title="utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">utils</span></code></a> サブモジュール<a class="headerlink" href="#utils" title="この見出しへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><span class="target" id="module-utils"></span><p>ユーティリティー関数</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.vowel_to_choon">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">vowel_to_choon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kana_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxrep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clean</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ou</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ei</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.vowel_to_choon" title="この定義へのパーマリンク">¶</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">vowel_to_choon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kana_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxrep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clean</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ou</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ei</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a></span></span></dt>
+<dd></dd></dl>
+
+<p>連続する同一母音を長音符（ー）で置き換えた文字列（あるいは <a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a> オブジェクト）を返します。入力の文字列は、全角カタカナで構成されているものと仮定されます。戻り値の型は、関数に対し str かそのサブタイプが渡されたなら str となり、 <a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a> オブジェクトか、
+<a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a> を継承したクラスのインスタンスが渡された場合は、
+<a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a> 型となります。 <em>maxrep</em> オプション （デフォルトは1）で長音符の連続をいくつまで許容するかを設定できます。 <em>clean</em> オプションが True の場合、出力から仮名以外の文字が全て除去されます。また、 <em>ou</em> を True に設定することで「オ段＋ウ」を、 <em>ei</em> を True に設定することで「エ段＋イ」を、それぞれ長音符表記に置き換えることができます。キーワード <em>nn</em> は、連続する撥音（ン）を長音符で置き換えるかどうかを制御します。デフォルトは <strong>True</strong> です。</p>
+<p>例:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># utilsサブモジュールから使用できる</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">morastrja.utils</span> <span class="kn">import</span> <span class="n">vowel_to_choon</span>
+
+<span class="go"># カタカナ文字列中の同一母音の連続を長音符（ー）に置き換える</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vowel_to_choon</span><span class="p">(</span><span class="s1">&#39;オオドオリ&#39;</span><span class="p">)</span>
+<span class="go">&#39;オードーリ&#39;</span>
+
+<span class="go"># ひらがなや半角カタカナのものは置き換えられないことに注意</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vowel_to_choon</span><span class="p">(</span><span class="s1">&#39;おおどおり&#39;</span><span class="p">)</span>
+<span class="go">&#39;おおどおり&#39;</span>
+
+<span class="go"># 同一母音が三つ以上連続する場合は、偶数番目のもののみが置き換えられる</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vowel_to_choon</span><span class="p">(</span><span class="s1">&#39;アアアアアアアア&#39;</span><span class="p">)</span>
+<span class="go">&#39;アーアーアーアー&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vowel_to_choon</span><span class="p">(</span><span class="s1">&#39;オオオカエチゼン&#39;</span><span class="p">)</span>
+<span class="go">&#39;オーオカエチゼン&#39;</span>
+
+<span class="go"># maxrepオプションで、長音符の連続をいくつまで許容するかが指定できる</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vowel_to_choon</span><span class="p">(</span><span class="s1">&#39;エエエエエエエエエエエエエエエエ&#39;</span><span class="p">,</span> <span class="n">maxrep</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">&#39;エーーーエーーーエーーーエーーー&#39;</span>
+
+<span class="go"># maxrepに-1を指定すると、際限なく置換される</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vowel_to_choon</span><span class="p">(</span><span class="s1">&#39;エエエエエエエエエエエエエエエエ&#39;</span><span class="p">,</span> <span class="n">maxrep</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">&#39;エーーーーーーーーーーーーーーー&#39;</span>
+
+<span class="go"># 元の文字列に既に長音符が含まれていた場合、maxrepを超えて長音符が連続することがある</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vowel_to_choon</span><span class="p">(</span><span class="s1">&#39;エエエエエエエエーーーエエエエ&#39;</span><span class="p">,</span> <span class="n">maxrep</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">&#39;エーーーエーーーーーーエーーー&#39;</span>
+
+<span class="go"># また、maxrepの値を大きくしても既存の長音のブロックが融合されるわけではないことに注意</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">vowel_to_choon</span><span class="p">(</span><span class="s1">&#39;エーーーーエーーーーー&#39;</span><span class="p">,</span> <span class="n">maxrep</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>                <span class="c1"># &#39;エーーーーーーーーーー&#39;にはならない</span>
+<span class="go">&#39;エーーーーエーーーーー&#39;</span>
+
+<span class="go"># デフォルトでは撥音（ン）の連続も長音符に置き換えられる</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vowel_to_choon</span><span class="p">(</span><span class="s1">&#39;ンン&#39;</span><span class="p">)</span>
+<span class="go">&#39;ンー&#39;</span>
+
+<span class="go"># 撥音を長音符に置き換えないようにするには、nnオプションをFalseに設定する</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vowel_to_choon</span><span class="p">(</span><span class="s1">&#39;ンン&#39;</span><span class="p">,</span> <span class="n">nn</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&#39;ンン&#39;</span>
+
+<span class="go"># ouオプションを指定すると、同一母音の連続に加えて「オ段＋ウ」も長音符表記される</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vowel_to_choon</span><span class="p">(</span><span class="s1">&#39;トウキョウ&#39;</span><span class="p">,</span> <span class="n">ou</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&#39;トーキョー&#39;</span>
+
+<span class="go"># eiオプションを指定すると、「エ段＋イ」も長音符表記される</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vowel_to_choon</span><span class="p">(</span><span class="s1">&#39;ケイエイ&#39;</span><span class="p">,</span> <span class="n">ei</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&#39;ケーエー&#39;</span>
+
+<span class="go"># cleanオプションを指定すると、出力から仮名以外の文字が全て除去される</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vowel_to_choon</span><span class="p">(</span><span class="s1">&#39;☆カナモジ★漢字&#39;</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&#39;カナモジ&#39;</span>
+
+<span class="go"># その際、ひらがな・半角カタカナは全て全角カタカナに置き換えられる</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vowel_to_choon</span><span class="p">(</span><span class="s1">&#39;ひらがなカタカナﾊﾝｶｸ漢字&#39;</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&#39;ヒラガナカタカナハンカク&#39;</span>
+</pre></div>
+</div>
+<p><strong>注意:</strong></p>
+<p><em>clean</em> オプションによる置換は、長音符の置き換えの後に適用されることに注意してください。</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vowel_to_choon</span><span class="p">(</span><span class="s1">&#39;おおどおりのオオカミ&#39;</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&#39;オオドオリノオーカミ&#39;</span>
+
+<span class="go"># 1. カタカナ部分を長音符表記に &#39;おおどおりのオオカミ&#39; → &#39;おおどおりのオーカミ&#39;</span>
+<span class="go"># 2. 残りを全角カタカナに正規化 &#39;おおどおりのオーカミ&#39; → &#39;オオドオリノオーカミ&#39;</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.choon_to_vowel">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">choon_to_vowel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kana_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clean</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.choon_to_vowel" title="この定義へのパーマリンク">¶</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">choon_to_vowel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kana_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clean</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><span class="pre">MoraStr</span></a></span></span></dt>
+<dd></dd></dl>
+
+<p>長音符（ー）を同一母音の連続に置き換えた文字列（あるいは <a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a> オブジェクト）を返します。入力の文字列は、全角カタカナで構成されているものと仮定されます。 <a class="reference internal" href="#utils.vowel_to_choon" title="utils.vowel_to_choon"><code class="xref py py-func docutils literal notranslate"><span class="pre">vowel_to_choon()</span></code></a> と概ね逆の処理になりますが、 <code class="docutils literal notranslate"><span class="pre">vowel_to_choon(choon_to_vowel(kana_string))</span></code> が必ずしも元のオブジェクトと等価になるとは限りません。。戻り値の型は、関数に対し str かそのサブタイプが渡されたなら str となり、 <a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a> オブジェクトか、
+<a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a> を継承したクラスのインスタンスが渡された場合は、
+<a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a> 型となります。長音符が全角カタカナ以外の文字の直後に現れたり、母音や撥音に変換できなかったりした場合には ValueError が送出されます。キーワード <em>strict</em> をFalse に設定すると、不適切な長音符は手付かずのまま残り、エラーは生じません。 <em>clean</em> を True にすると、全角カタカナ以外の全ての文字が除去されます。ですので、その戻り値は <a class="reference internal" href="#morastrja.MoraStr" title="morastrja.MoraStr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code></a>
+クラスのコンストラクターに安全に渡すことができます。</p>
+<p>例:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># utilsサブモジュールから使用できる</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">morastrja.utils</span> <span class="kn">import</span> <span class="n">choon_to_vowel</span>
+
+<span class="go"># カタカナ文字列中の長音符（ー）を同一母音の連続に置き換える</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">choon_to_vowel</span><span class="p">(</span><span class="s1">&#39;ポケモンセンターオーサカ&#39;</span><span class="p">)</span>
+<span class="go">&#39;ポケモンセンタアオオサカ&#39;</span>
+
+<span class="go"># 撥音（ン）の直後の長音符も置換される</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">choon_to_vowel</span><span class="p">(</span><span class="s1">&#39;ンーモッツァ&#39;</span><span class="p">)</span>
+<span class="go">&#39;ンンモッツァ&#39;</span>
+
+<span class="go"># 全角カタカナ以外の文字の直後の長音符は置き換えられず、エラーとなる</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">choon_to_vowel</span><span class="p">(</span><span class="s1">&#39;そーゆーこと&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">ValueError</span>: <span class="n">...</span>
+
+<span class="x"># 全角カタカナであっても、促音（ッ）の直後の長音符はエラーとなる</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">choon_to_vowel</span><span class="p">(</span><span class="s1">&#39;アッー&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">ValueError</span>: <span class="n">...</span>
+
+<span class="x"># strictオプションをFalseにすると、エラーは発生せず無視される</span>
+<span class="x"># その場合も置換は行われない</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">choon_to_vowel</span><span class="p">(</span><span class="s1">&#39;そーゆーこと&#39;</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&#39;そーゆーこと&#39;</span>
+
+<span class="go"># cleanオプションを指定すると、出力から仮名以外の文字が全て除去される</span>
+<span class="go"># その際、ひらがな・半角カタカナは全て全角カタカナに置き換えられる</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">choon_to_vowel</span><span class="p">(</span><span class="s1">&#39;ひらがな☆カタカナ★ﾊﾝｶｸ♪漢字&#39;</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&#39;ヒラガナカタカナハンカク&#39;</span>
+</pre></div>
+</div>
+<p><strong>注意:</strong></p>
+<p><em>clean</em> オプションによる置換は、エラーチェックや長音符の置き換えの後に適用されることに注意してください。</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">choon_to_vowel</span><span class="p">(</span><span class="s1">&#39;エラーなし&#39;</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&#39;エラアナシ&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">choon_to_vowel</span><span class="p">(</span><span class="s1">&#39;えらーアリ&#39;</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">ValueError</span>: <span class="n">...</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="#utils.vowel_to_choon" title="utils.vowel_to_choon"><code class="xref py py-func docutils literal notranslate"><span class="pre">vowel_to_choon()</span></code></a> も参照</p>
+</div></blockquote>
+<p class="rubric">Footnotes</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id8" role="note">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id3">2</a>,<a role="doc-backlink" href="#id6">3</a>)</span>
+<p>小文字の morastr は任意の <code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code> オブジェクトを指します。</p>
+</aside>
+<aside class="footnote brackets" id="id9" role="note">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id4">1</a>,<a role="doc-backlink" href="#id5">2</a>)</span>
+<p>マッチした部分同士がオーバーラップすることはありません。これは組み込みの文字列型と同じ振舞いです。</p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">目次</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">morastrja</span></code> --- 日本語のモーラ列の管理</a><ul>
+<li><a class="reference internal" href="#id1">モジュール関数</a><ul>
+<li><a class="reference internal" href="#morastrja.count_all"><code class="docutils literal notranslate"><span class="pre">count_all()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#morastr"><code class="xref py py-class docutils literal notranslate"><span class="pre">MoraStr</span></code> オブジェクト</a><ul>
+<li><a class="reference internal" href="#morastrja.MoraStr"><code class="docutils literal notranslate"><span class="pre">MoraStr</span></code></a><ul>
+<li><a class="reference internal" href="#morastrja.MoraStr.fromstrs"><code class="docutils literal notranslate"><span class="pre">MoraStr.fromstrs()</span></code></a></li>
+<li><a class="reference internal" href="#morastrja.MoraStr.count_all"><code class="docutils literal notranslate"><span class="pre">MoraStr.count_all()</span></code></a></li>
+<li><a class="reference internal" href="#morastrja.MoraStr.char_indices"><code class="docutils literal notranslate"><span class="pre">MoraStr.char_indices()</span></code></a></li>
+<li><a class="reference internal" href="#morastrja.MoraStr.count"><code class="docutils literal notranslate"><span class="pre">MoraStr.count()</span></code></a></li>
+<li><a class="reference internal" href="#morastrja.MoraStr.endswith"><code class="docutils literal notranslate"><span class="pre">MoraStr.endswith()</span></code></a></li>
+<li><a class="reference internal" href="#morastrja.MoraStr.find"><code class="docutils literal notranslate"><span class="pre">MoraStr.find()</span></code></a></li>
+<li><a class="reference internal" href="#morastrja.MoraStr.finditer"><code class="docutils literal notranslate"><span class="pre">MoraStr.finditer()</span></code></a></li>
+<li><a class="reference internal" href="#morastrja.MoraStr.index"><code class="docutils literal notranslate"><span class="pre">MoraStr.index()</span></code></a></li>
+<li><a class="reference internal" href="#morastrja.MoraStr.removeprefix"><code class="docutils literal notranslate"><span class="pre">MoraStr.removeprefix()</span></code></a></li>
+<li><a class="reference internal" href="#morastrja.MoraStr.removesuffix"><code class="docutils literal notranslate"><span class="pre">MoraStr.removesuffix()</span></code></a></li>
+<li><a class="reference internal" href="#morastrja.MoraStr.replace"><code class="docutils literal notranslate"><span class="pre">MoraStr.replace()</span></code></a></li>
+<li><a class="reference internal" href="#morastrja.MoraStr.rfind"><code class="docutils literal notranslate"><span class="pre">MoraStr.rfind()</span></code></a></li>
+<li><a class="reference internal" href="#morastrja.MoraStr.rindex"><code class="docutils literal notranslate"><span class="pre">MoraStr.rindex()</span></code></a></li>
+<li><a class="reference internal" href="#morastrja.MoraStr.startswith"><code class="docutils literal notranslate"><span class="pre">MoraStr.startswith()</span></code></a></li>
+<li><a class="reference internal" href="#morastrja.MoraStr.tostr"><code class="docutils literal notranslate"><span class="pre">MoraStr.tostr()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">内部データ</a><ul>
+<li><a class="reference internal" href="#morastrja.CONVERSION_TABLE"><code class="docutils literal notranslate"><span class="pre">CONVERSION_TABLE</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">utils</span></code> サブモジュール</a><ul>
+<li><a class="reference internal" href="#utils.vowel_to_choon"><code class="docutils literal notranslate"><span class="pre">vowel_to_choon()</span></code></a></li>
+<li><a class="reference internal" href="#utils.choon_to_vowel"><code class="docutils literal notranslate"><span class="pre">choon_to_vowel()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>前のトピックへ</h4>
+    <p class="topless"><a href="index.html"
+                          title="前の章へ">Welcome to morastrja's documentation!</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>このページ</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/morastr_module.rst.txt"
+            rel="nofollow">ソースコードを表示</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Pythonモジュール索引"
+             >モジュール</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to morastrja&#39;s documentation!"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">morastrja 0.8.5 ドキュメント</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">morastrja</span></code> --- 日本語のモーラ列の管理</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Hizuru.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+    </div>
+  </body>
+</html>
