@@ -1,4 +1,4 @@
-# morastrja
+# morastrja (CPython Library)
 *Mora String for the Japanese Language*
 
 仮名文字で表現された日本語のモーラ列を文字列のように扱えるクラスを提供します。
