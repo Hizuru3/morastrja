@@ -6,7 +6,7 @@
 
 ## License
 
-[MIT License]https://github.com/Hizuru3/morastrja/blob/main/LICENSE
+[MIT License](https://github.com/Hizuru3/morastrja/blob/main/LICENSE)
 
 ## Usage
 
