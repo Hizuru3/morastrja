@@ -1,1 +1,2 @@
-ext/* linguist-vendored
+ext/*.c linguist-vendored
+*.pyi linguist-language=Python
