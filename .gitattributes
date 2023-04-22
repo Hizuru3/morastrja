@@ -1,2 +1,2 @@
-ext/*.c linguist-vendored
-ext/cmorastr_pre.h linguist-vendored
+ext/cmorastr_pre.h  linguist-vendored
+ext/*.c             linguist-vendored
