@@ -4,6 +4,7 @@ Mora String for the Japansese Language
 仮名文字で表現された日本語のモーラ列を文字列っぽく扱えます。
 モーラ数のカウントや部分モーラ列の判定を高速に行うことができます。
 
+```python
 # MoraStrクラスをインポート
 >>> from morastr import MoraStr
 
@@ -54,7 +55,7 @@ MoraStr('ジェ' 'ッ' 'ト')
 MoraStr('コ' 'ン' 'ピュ' 'ー' 'タ' 'ー')
 >>> moras.string
 'コンピューター'
-
+```
 
 その他、組み込みの文字列型と共通のメソッドも多くサポートしています。
 詳しくはドキュメントをご覧ください。
