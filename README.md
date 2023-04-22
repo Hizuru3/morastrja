@@ -4,11 +4,11 @@
 仮名文字で表現された日本語のモーラ列を文字列のように扱えるクラスを提供します。
 モーラ数のカウントや部分モーラ列の判定を高速に行うことができます。
 
-## License ライセンス
+## License
 
 [MIT License](https://github.com/Hizuru3/morastrja/blob/main/LICENSE)
 
-## Usage 使い方
+## Usage
 
 ```python
 # MoraStrクラスをインポート
