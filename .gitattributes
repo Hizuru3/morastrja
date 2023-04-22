@@ -1,2 +1,2 @@
 ext/*.c linguist-vendored
-*.bak linguist-language=Python
+ext/cmorastr_pre.h linguist-vendored
