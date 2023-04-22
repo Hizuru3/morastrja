@@ -8,6 +8,12 @@
 
 [MIT License](https://github.com/Hizuru3/morastrja/blob/main/LICENSE)
 
+## Installation
+
+```sh
+pip install morastrja
+```
+
 ## Usage
 
 ```python
