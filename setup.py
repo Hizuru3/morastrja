@@ -3,7 +3,7 @@ from setuptools import setup, Extension
 
 ext = Extension('morastrja._morastr',
                 sources = ['ext/cmorastr.c'],
-                extra_compile_args=['/O2'])
+                extra_compile_args=['-O2'])
 
 setup (name = 'morastrja',
        version = '0.8.5',
