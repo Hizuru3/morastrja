@@ -21,6 +21,6 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install morastrja
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - name: Test with pytest
+      - name: Test with doctest
         run: |
           python docs/morastr_doctest.py -v
