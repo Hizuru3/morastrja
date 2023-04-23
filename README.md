@@ -20,7 +20,7 @@ pip install morastrja
 
 ```python
 # MoraStrクラスをインポート
->>> from morastr import MoraStr
+>>> from morastrja import MoraStr
 
 # インスタンスの作成
 >>> MoraStr('モーラ')
