@@ -502,10 +502,10 @@ static inline bool all_in_katakana_range4(uint64_t x) {
 
     return (
         (
-            ~0ULL / 0xffff * (0x7fff + end)
-            - (x & ~0ULL / 0xffff * 0x7fff)
-            & ~x & (x & ~0ULL / 0xffff * 0x7fff)
-            + ~0ULL / 0xffff * (0x8000 - start)
+            (~0ULL / 0xffff * (0x7fff + end)
+            - (x & ~0ULL / 0xffff * 0x7fff))
+            & ~x & ((x & ~0ULL / 0xffff * 0x7fff)
+            + ~0ULL / 0xffff * (0x8000 - start))
         )
         & ~0ULL / 0xffff * 0x8000
     ) == 0x8000800080008000ULL;
