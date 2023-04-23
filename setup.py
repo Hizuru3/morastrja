@@ -6,7 +6,7 @@ ext = Extension('morastrja._morastr',
                 extra_compile_args=['-O2'])
 
 setup (name = 'morastrja',
-       version = '0.8.5',
+       version = '0.8.6',
        description = 'Mora String for the Japanese Language',
        author = 'Hizuru',
        url = 'https://github.com/Hizuru3/morastrja',
@@ -16,7 +16,8 @@ This module provides a class that counts morae, based on Japanese syllabaries.
 ''',
        packages = ['morastrja', 'morastrja.data'],
        package_data = {'morastrja': ['__init__.pyi', 'utils.pyi'],
-                       'morastrja.data': ['table.bak']},
+                       'morastrja.data': ['table.bak'],
+                       'ext': ['*.c', '*.h']},
        ext_modules = [ext],
        classifiers = ['Intended Audience :: Science/Research',
                       'Intended Audience :: Developers',
