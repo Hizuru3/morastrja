@@ -74,9 +74,6 @@ class MoraStr(Sequence[str]):
 
     def __repr__(self) -> str: ...
 
-    def at(self, __i: int | SupportsIndex) -> str:
-        "Return the ith mora (1-indexed), or an empty str if not found."
-
     def char_indices(self, *, zero: bool = False) -> list[int]:
         "Return a list of accumulative character counts for each mora."
 
