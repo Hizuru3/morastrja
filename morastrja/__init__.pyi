@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import sys
-from typing import TypeVar, overload, Any
+from typing import TypeVar, overload
 
 if sys.version_info >= (3, 8):
     from typing import SupportsIndex
@@ -49,14 +49,14 @@ class MoraStr(Sequence[str]):
 
     def __add__(self: Self, __other: MoraStr | str) -> Self: ...
 
-    def __contains__(self, __sub_morastr: str | MoraStr) -> bool: ...
+    def __contains__(self, __sub_morastr: str | MoraStr) -> bool: ...   # type: ignore[override]
 
     def __eq__(self, __other: object) -> bool: ...
 
     @overload
-    def __getitem__(self: Self, __index: slice) -> Self: ...
-    @overload
     def __getitem__(self, __index: int | SupportsIndex) -> str: ...
+    @overload
+    def __getitem__(self: Self, __index: slice) -> Self: ...
 
     def __getnewargs__(self) -> tuple[str]: ...
 
@@ -93,14 +93,13 @@ class MoraStr(Sequence[str]):
              __end: int | SupportsIndex | None = ...) -> int: ...
     @overload
     def find(self, __sub_morastr: str | MoraStr,
-             *, charwise: bool = False) -> int: ...
-    def find(self, *args, **kwargs):
+             *, charwise: bool = False) -> int:
         "Return the 1st index " \
         "where sub_morastr is found within self[start:end]."
 
     def finditer(self, __sub_morastr: str | MoraStr,
-                 *, charwise: bool = False) -> Iterator[int]: ...
-        "Return an iterator that yields indices of sub_morastr "
+                 *, charwise: bool = False) -> Iterator[int]:
+        "Return an iterator that yields indices of sub_morastr " \
         "found in self."
 
     @overload
@@ -109,8 +108,7 @@ class MoraStr(Sequence[str]):
               __end: int | SupportsIndex | None = ...) -> int: ...
     @overload
     def index(self, __sub_morastr: str | MoraStr,
-              *, charwise: bool = False) -> int: ...
-    def index(self, *args, **kwargs):
+              *, charwise: bool = False) -> int:
         "Like MoraStr.find(), but raises an error " \
         "when sub_morastr is not found."
 
@@ -133,8 +131,7 @@ class MoraStr(Sequence[str]):
               __end: int | SupportsIndex | None = ...) -> int: ...
     @overload
     def rfind(self, __sub_morastr: str | MoraStr,
-              *, charwise: bool = False) -> int: ...
-    def rfind(self, *args, **kwargs):
+              *, charwise: bool = False) -> int:
         "Return the last index " \
         "where sub_morastr is found within self[start:end]."
 
@@ -144,8 +141,7 @@ class MoraStr(Sequence[str]):
                __end: int | SupportsIndex | None = ...) -> int: ...
     @overload
     def rindex(self, __sub_morastr: str | MoraStr,
-               *, charwise: bool = False) -> int: ...
-    def rindex(self, *args, **kwargs):
+               *, charwise: bool = False) -> int:
         "Like MoraStr.rfind(), but raise an error " \
         "when sub_morastr is not found."
 
