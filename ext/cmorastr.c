@@ -3929,7 +3929,7 @@ MoraStrIter_len(MoraStrIterObject *it) {
 
 static PyObject *
 MoraStrIter_reduce(MoraStrIterObject *it, PyObject *Py_UNUSED(ignored)) {
-#if defined(_Py_IDENTIFIER)
+#if defined(_Py_IDENTIFIER) && PY_VERSION_HEX < 0x030c0000
     _Py_IDENTIFIER(iter);
     if (!it->it_seq) {
         return Py_BuildValue("N(())", _PyEval_GetBuiltinId(&PyId_iter));
