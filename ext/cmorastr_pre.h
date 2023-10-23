@@ -56,6 +56,12 @@ static inline PyObject* _Py_NewRef(PyObject *obj)
 #endif
 
 
+// removed
+#if PY_VERSION_HEX >= 0x030c0000
+  #define _PyUnicode_FastCopyCharacters PyUnicode_CopyCharacters
+#endif
+
+
 /* Memory Allocation */
 
 #if defined(MORASTR_USING_PYMEM_MALLOC)
