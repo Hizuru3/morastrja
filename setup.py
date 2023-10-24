@@ -7,7 +7,7 @@ ext = Extension('morastrja._morastr',
                 extra_compile_args=['-O2'])
 
 setup (name = 'morastrja',
-       version = '0.8.10',
+       version = '0.8.11',
        description = 'Mora String for the Japanese Language',
        author = 'Hizuru',
        url = 'https://github.com/Hizuru3/morastrja',
